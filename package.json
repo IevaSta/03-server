@@ -1,0 +1,17 @@
+{
+  "name": "03-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "prod": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ieva",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
