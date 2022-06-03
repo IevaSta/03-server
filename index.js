@@ -22,21 +22,14 @@ config.prod = {
     },
 }
 
-//spausdinam objekta: process.env.NODE_ENV priskiriam kintamajam
+//process.env.NODE_ENV priskiriam kintamajam ---- issitraukiam, ka zmogus parase, jeigu parase
 const nodeEnv = process.env.NODE_ENV;
-// const options = config[nodeEnv] //objekto value []
 
-//= nodeEnv ?jeigu jis yra, atrodys taip =>? config[nodeEnv] :jeigo jo nera, naudosim: config.dev
-const options = nodeEnv ? config[nodeEnv] : config.dev;
+//=ar uzklausoje nurodyta aplinka (neigiama ar teigiama stringo reiksme) ? TAIP -> options : NE -> 'dev'
+const env = nodeEnv ? nodeEnv : 'dev';
 
+//= ar turi nurodyta aplinka ? jeigu turi, naudojam aplinka : jeigu neturi, naudojam default nurodyta aplinka
+const options = config[env] ? config[env] : config.dev;
 
 console.log(nodeEnv);
 console.log(options);
-
-
-/*
-node ./index.js                 -dev by default
-NODE_ENV=dev node ./index.js    -dev
-NODE_ENV=prod node ./index.js   -prod ypatinga aplinka
-NODE_ENV=test node ./index.js   -test (jei konkreti aplinka neuzregistruota - by default pasirinks dev aplinka)
-*/
