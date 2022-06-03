@@ -1,35 +1,21 @@
-const config = {};
+import { server } from './lib/server.js'
 
-config.dev = {
-    name: 'dev',
-    passwordLength: 2,
-    defaultLanguage: 'en',
-    db: {
-        user: 'root',
-        password: 'admin',
-        database: 'batai',
-    },
+const app = {};
+
+app.init = () => {
+    //susikurti busimus reikiamus folderius
+    //susikurti busimus reikiamus failus, pvz.: robots.txt
+
+    //paleidziam pacio serverio logika
+    server.init();
+
+    //paleidziam papildomus nuolatinius procesus:
+    //- issitrinti nebereikalingus failus
+    //- susiarchivuoti retai naudojamus failus
+    //- prasukti reikiamus API
+    //- vartotoju validacija
 }
 
-config.prod = {
-    name: 'prod',
-    passwordLength: 12,
-    defaultLanguage: 'lt',
-    db: {
-        user: 'node_batai',
-        password: 'xxxxxxxx',
-        database: 'batai_zzz',
-    },
-}
+app.init();
 
-//process.env.NODE_ENV priskiriam kintamajam ---- issitraukiam, ka zmogus parase, jeigu parase
-const nodeEnv = process.env.NODE_ENV;
-
-//=ar uzklausoje nurodyta aplinka (neigiama ar teigiama stringo reiksme) ? TAIP -> options : NE -> 'dev'
-const env = nodeEnv ? nodeEnv : 'dev';
-
-//= ar turi nurodyta aplinka ? jeigu turi, naudojam aplinka : jeigu neturi, naudojam default nurodyta aplinka
-const options = config[env] ? config[env] : config.dev;
-
-console.log(nodeEnv);
-console.log(options);
+export default app;
