@@ -2,6 +2,7 @@ const config = {};
 
 config.dev = {
     name: 'dev',
+    port: 4200,
     passwordLength: 2,
     defaultLanguage: 'en',
     db: {
@@ -13,6 +14,7 @@ config.dev = {
 
 config.prod = {
     name: 'prod',
+    port: 42069,
     passwordLength: 12,
     defaultLanguage: 'lt',
     db: {
