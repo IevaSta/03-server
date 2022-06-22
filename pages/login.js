@@ -8,7 +8,7 @@ class PageLogin extends PageTemplate {
 
     mainHTML() {
         return `<div class="row">
-        <h1>Login page 🎅</h1>
+        <h1>Login page</h1>
         </div>`;
     }
 }
