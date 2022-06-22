@@ -4,6 +4,7 @@ class PageHome extends PageTemplate {
     constructor(data) {
         super(data);
         this.title = 'Home | Server';
+        this.pageJSfileName = 'home';
     }
 
     mainHTML() {
