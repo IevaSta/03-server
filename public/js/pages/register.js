@@ -26,11 +26,23 @@ if (submitDOM) {
                 }
             } else {
                 data[inputDOM.name] = inputDOM.checked;
+                if (!inputDOM.checked) {
+                    errors.push('Privaloma sutikti su TOS');
+                }
             }
         }
+
+        if (inputsDOM[2].value !== inputsDOM[3].value) {
+            errors.push('Slaptazodziai nesutampa');
+        }
+
         if (errors.length) {
             notificationsDOM.classList.add('show');
             notificationsDOM.innerText = errors.join('.\n') + '.';
+        } else {
+            console.log('KLAIDU NERASTA...');
+            console.log('SIUNCIAM DUOMENIS I SERVERI...');
+            console.log(data);
         }
     })
 }
