@@ -2,9 +2,10 @@ const config = {};
 
 config.dev = {
     name: 'dev',
-    port: 4200,
+    httpPort: 4200,
     passwordLength: 2,
     defaultLanguage: 'en',
+    languages: ['en', 'lt', 'ee'],
     db: {
         user: 'root',
         password: 'admin',
@@ -12,23 +13,24 @@ config.dev = {
     },
     cache: {
         default: 0,
-        period: {},
+        periods: {},
     }
 }
 
 config.prod = {
     name: 'prod',
-    port: 42069,
+    httpPort: 42069,
     passwordLength: 12,
     defaultLanguage: 'lt',
+    languages: ['en', 'lt'],
     db: {
-        user: 'node_batai',
-        password: 'xxxxxxxx',
-        database: 'batai_zzz',
+        user: 'node_batai_user',
+        password: 'r84tr5s25e84rrg52f5er84r5ert8r4g55e',
+        database: 'batai-r5fe1d15',
     },
     cache: {
         default: 60 * 60,
-        period: {
+        periods: {
             css: 60 * 60,
             js: 60 * 60,
             svg: 60 * 60,
@@ -47,16 +49,12 @@ config.prod = {
     }
 }
 
-//process.env.NODE_ENV priskiriam kintamajam ---- issitraukiam, ka zmogus parase, jeigu parase
 const nodeEnv = process.env.NODE_ENV;
-
-//=ar uzklausoje nurodyta aplinka (neigiama ar teigiama stringo reiksme) ? TAIP -> options : NE -> 'dev'
 const env = nodeEnv ? nodeEnv : 'dev';
-
-//= ar turi nurodyta aplinka ? jeigu turi, naudojam aplinka : jeigu neturi, naudojam default nurodyta aplinka
 const options = config[env] ? config[env] : config.dev;
 
-// console.log(nodeEnv);
-// console.log(options);
+// console.log('kur dirba kodas?');
+// console.log('Ka parasiau terminale:', nodeEnv);
+// console.log('Kokia aplinka turesiu paleisti:', env);
 
 export default options;
