@@ -14,7 +14,7 @@ class PageRegister extends PageTemplate {
                         fullname: isDev ? 'Chuck Norris' : '',
                         email: isDev ? 'chuck@norris.com' : '',
                         pass: isDev ? 'chucknorrischucknorris' : '',
-                        repass: isDev ? 'chucknorrischucknorris2' : '',
+                        repass: isDev ? 'chucknorrischucknorris' : '',
                 }
                 return `<div class="row">
         <h1>Register</h1>

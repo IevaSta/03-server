@@ -7,12 +7,8 @@ class IsValid {
             return [true, 'Netinkamas tipas, turi buti "string"'];
         }
 
-        const maxSize = 100;
-        if (str.length > maxSize) {
-            return [true, `Per ilgas pilnas vardas, negali virsyti ${maxSize} simboliu`];
-        }
-
         str = str.trim().replace(/\s+/g, ' ');
+        // str = str.trim().replaceAll('  ', ' '); // nes pas mane sitas neveikia :(
 
         const minWordsCount = 2;
         const minWordLength = 2;
@@ -60,11 +56,6 @@ class IsValid {
         str = str.trim();
         if (str === '') {
             return [true, 'Neivestas email adresas'];
-        }
-
-        const maxSize = 100;
-        if (str.length > maxSize) {
-            return [true, `Per ilgas email, negali virsyti ${maxSize} simboliu`];
         }
 
         const parts = str.split('@');
@@ -116,16 +107,12 @@ class IsValid {
 
     static password(str) {
         const minPasswordLength = 12;
-        const maxPasswordLength = 120;
 
         if (typeof str !== 'string') {
             return [true, 'Netinkamas tipas, turi buti "string"'];
         }
         if (str.length < minPasswordLength) {
             return [true, `Per trumpas password tekstas, turi buti minimum ${minPasswordLength} simboliai`];
-        }
-        if (str.length > maxPasswordLength) {
-            return [true, `Per ilgas password tekstas, negali virsyti ${maxPasswordLength} simboliai`];
         }
 
         return [false, 'OK'];
