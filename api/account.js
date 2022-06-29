@@ -84,6 +84,8 @@ handler._innerMethods.post = async (data, callback) => {
             - siunciam patvirtinimo laiska
         - jei nepavyko - error
     */
+    delete payload.pass;
+    payload.hashedPassword = utils.hash(pass)[1];
 
     const [createErr, createMsg] = await file.create('accounts', email + '.json', payload);
     if (createErr) {

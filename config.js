@@ -14,7 +14,8 @@ config.dev = {
     cache: {
         default: 0,
         periods: {},
-    }
+    },
+    hashingSecret: 'fdggdf156516dfba165sdgsd12',
 }
 
 config.prod = {
@@ -46,7 +47,8 @@ config.prod = {
             pdf: 60 * 60,
             json: 60 * 60,
         },
-    }
+    },
+    hashingSecret: '1565f6dbd6fn61s5dvsd1vsfb6fsb5sf1bsfn6b5sf1nsfb65f',
 }
 
 const nodeEnv = process.env.NODE_ENV;
