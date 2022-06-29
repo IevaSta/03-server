@@ -1,0 +1,20 @@
+/* base */
+
+@import '../base/base.css';
+@import '../base/layout.css';
+
+/* 3ird party */
+
+/* components */
+
+@import '../components/button.css';
+@import '../components/header.css';
+@import '../components/form.css';
+@import '../components/footer.css';
+
+/*CUSTOM STYLE BELOW THIS COMMENT LINE*/
+main.container > .row {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
