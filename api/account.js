@@ -104,6 +104,12 @@ handler._innerMethods.get = async (data, callback) => {
     const email = data.searchParams.get('email');
 
     //2 - Patikriname ar gautas email yra email formato
+    const [emailErr, emailMsg] = IsValid.email(email);
+    if (emailErr) {
+        return callback(400, {
+            msg: emailMsg,
+        });
+    }
 
     //3- Bandom perskaityti vartotojo duomenis
     //-jei ERROR - vartotojas neegzistuoja
@@ -111,7 +117,7 @@ handler._innerMethods.get = async (data, callback) => {
     const [readErr, readMsg] = await file.read('accounts', email + '.json');
     if (readErr) {
         return callback(404, {
-            msg: 'Toks vartotojas neegzistuoja arba nepavyko gauti duomenu del teisiu trukumo'
+            msg: 'Toks vartotojas neegzistuoja arba nepavyko gauti duomenu del teisiu trukumo',
         });
     }
 
