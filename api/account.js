@@ -4,13 +4,13 @@ import { utils } from "../lib/utils.js";
 
 const handler = {};
 
-handler.account = (data, callback) => {
+handler.account = async (data, callback) => {
     // kliento intensija - ka jis nori daryti?
     const acceptableMethods = ['get', 'post', 'put', 'delete'];
 
     if (acceptableMethods.includes(data.httpMethod)) {
         const httpMethodFunc = handler._innerMethods[data.httpMethod];
-        return httpMethodFunc(data, callback);
+        return await httpMethodFunc(data, callback);
     }
 
     return callback(405, {
@@ -93,7 +93,6 @@ handler._innerMethods.post = async (data, callback) => {
     */
 
     const [createErr, createMsg] = await file.create('accounts', email + '.json', payload);
-    console.log(createMsg);
     if (createErr) {
         return callback(500, {
             msg: 'Nepavyko sukurti paskiros del vidines serverio klaidos. Pabandykite veliau'
