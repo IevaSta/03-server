@@ -1,0 +1,27 @@
+.form {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 10px;
+}
+.form > .notifications {
+    display: none;
+    border: 2px solid red;
+    background-color: darkgrey;
+    color: black;
+    padding: 10px 20px;
+}
+.form > .notifications.show {
+    display: block;
+}
+.form > input {
+    font-size: 14px;
+    line-height: 1.8em;
+    padding: 0 0.2em;
+}
+.form > button {
+    font-size: 14px;
+    line-height: 1.8em;
+}
