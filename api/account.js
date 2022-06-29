@@ -1,3 +1,4 @@
+import { file } from "../lib/file.js";
 import { IsValid } from "../lib/is-valid/IsValid.js";
 import { utils } from "../lib/utils.js";
 
@@ -27,7 +28,7 @@ handler._innerMethods.get = (data, callback) => {
 }
 
 // POST - sukuriame paskyra
-handler._innerMethods.post = (data, callback) => {
+handler._innerMethods.post = async (data, callback) => {
     const { payload } = data;
 
     /*
@@ -77,8 +78,12 @@ handler._innerMethods.post = (data, callback) => {
         - jei ne - tęsiam
     */
 
-
-
+    const [readErr] = await file.read('accounts', email + '.json');
+    if (!readErr) {
+        return callback(400, {
+            msg: 'Paskyra jau egzistuoja'
+        })
+    }
 
     /*
     3) issaugoti duomenis (payload)
@@ -87,7 +92,13 @@ handler._innerMethods.post = (data, callback) => {
         - jei nepavyko - error
     */
 
-    console.log(payload);
+    const [createErr, createMsg] = await file.create('accounts', email + '.json', payload);
+    console.log(createMsg);
+    if (createErr) {
+        return callback(500, {
+            msg: 'Nepavyko sukurti paskiros del vidines serverio klaidos. Pabandykite veliau'
+        })
+    }
 
     return callback(200, {
         msg: 'Paskyra sukurta sekmingai',
