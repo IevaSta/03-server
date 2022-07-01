@@ -89,7 +89,7 @@ handler._innerMethods.post = async (data, callback) => {
     payload.lastLogginDate = 0;
     payload.registrationDate = Date.now();
     payload.IPaddress = '';
-    payload.browser = '';
+    payload.browser = data.user.browser;
 
     const [createErr, createMsg] = await file.create('accounts', email + '.json', payload);
     if (createErr) {
