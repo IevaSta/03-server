@@ -4,7 +4,7 @@ import { utils } from "../lib/utils.js";
 
 const handler = {};
 
-handler.account = async (data, callback) => {
+handler.token = async (data, callback) => {
     // kliento intensija - ka jis nori daryti?
     const acceptableMethods = ['get', 'post', 'put', 'delete'];
 
