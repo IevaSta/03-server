@@ -88,7 +88,6 @@ handler._innerMethods.post = async (data, callback) => {
     payload.hashedPassword = utils.hash(pass)[1];
     payload.lastLogginDate = 0;
     payload.registrationDate = Date.now();
-    payload.IPaddress = '';
     payload.browser = data.user.browser;
 
     const [createErr, createMsg] = await file.create('accounts', email + '.json', payload);
