@@ -16,6 +16,7 @@ config.dev = {
         periods: {},
     },
     hashingSecret: 'fdggdf156516dfba165sdgsd12',
+    sessionTokenLength: 10,
 }
 
 config.prod = {
@@ -49,6 +50,7 @@ config.prod = {
         },
     },
     hashingSecret: '1565f6dbd6fn61s5dvsd1vsfb6fsb5sf1bsfn6b5sf1nsfb65f',
+    sessionTokenLength: 30,
 }
 
 const nodeEnv = process.env.NODE_ENV;
